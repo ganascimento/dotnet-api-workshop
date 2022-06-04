@@ -1,6 +1,6 @@
 using System;
 
-namespace Api.Domain.Entities
+namespace Api.Domain.Entities.Base
 {
     public abstract class BaseEntity
     {

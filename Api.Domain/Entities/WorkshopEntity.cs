@@ -1,3 +1,5 @@
+using Api.Domain.Entities.Base;
+
 namespace Api.Domain.Entities
 {
     public class WorkshopEntity : BaseEntity
