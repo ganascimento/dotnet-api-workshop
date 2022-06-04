@@ -3,7 +3,7 @@ using Api.Domain.Interfaces.Repositories.Base;
 
 namespace Api.Domain.Interfaces.Repositories
 {
-    public interface IServiceRepository : IQueryRepository<ServiceEntity>
+    public interface IServiceRepository : IRepository<ServiceEntity>
     {
     }
 }

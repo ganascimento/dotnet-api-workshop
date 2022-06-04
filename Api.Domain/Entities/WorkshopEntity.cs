@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Api.Domain.Entities.Base;
 
 namespace Api.Domain.Entities
@@ -13,5 +14,6 @@ namespace Api.Domain.Entities
         public int AuthId { get; set; }
         
         public virtual AuthEntity Auth { get; set; }
+        public virtual IEnumerable<ScheduleEntity> Schedules { get; set; }
     }
 }

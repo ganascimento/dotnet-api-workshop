@@ -6,7 +6,7 @@ using Api.Domain.Interfaces.Repositories.Base;
 
 namespace Api.Domain.Interfaces.Repositories
 {
-    public interface IScheduleRepository : ICommandRepository<ScheduleEntity>
+    public interface IScheduleRepository : IRepository<ScheduleEntity>
     {
         Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(DateTime date);
         Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(DateTime startDate, DateTime endDate);

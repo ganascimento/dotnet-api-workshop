@@ -4,7 +4,7 @@ using Api.Domain.Interfaces.Repositories.Base;
 
 namespace Api.Domain.Interfaces.Repositories
 {
-    public interface IAuthRepository : ICommandRepository<AuthEntity>, IQueryRepository<AuthEntity>
+    public interface IAuthRepository : IRepository<AuthEntity>
     {
         Task<bool> Exists(string cnpj);
     }
