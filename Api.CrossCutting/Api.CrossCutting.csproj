@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.7" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.4" />
   </ItemGroup>
@@ -13,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Api.Domain\Api.Domain.csproj" />
     <ProjectReference Include="..\Api.Infra\Api.Infra.csproj" />
+    <ProjectReference Include="..\Api.Service\Api.Service.csproj" />
   </ItemGroup>
 
 </Project>

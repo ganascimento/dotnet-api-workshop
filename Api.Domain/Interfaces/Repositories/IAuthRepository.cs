@@ -6,6 +6,6 @@ namespace Api.Domain.Interfaces.Repositories
 {
     public interface IAuthRepository : IRepository<AuthEntity>
     {
-        Task<bool> Exists(string cnpj);
+        Task<AuthEntity> SelectByCnpjAsync(string cnpj);
     }
 }

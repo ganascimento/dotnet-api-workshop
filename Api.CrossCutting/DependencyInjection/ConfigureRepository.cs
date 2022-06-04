@@ -10,9 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Api.CrossCutting.DependencyInjection
 {
-    public class ConfigureRepository
+    public static class ConfigureRepository
     {
-        public static void ConfigureDependenciesRepository(IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureDependenciesRepository(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IAuthRepository, AuthRepository>();

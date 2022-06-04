@@ -255,6 +255,16 @@
         "runtime": {
           "lib/net5.0/System.Diagnostics.DiagnosticSource.dll": {}
         }
+      },
+      "Api.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Api.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Api.Domain.dll": {}
+        }
       }
     }
   },
@@ -817,10 +827,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Api.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Api.Domain/Api.Domain.csproj",
+      "msbuildProject": "../Api.Domain/Api.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Api.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.17",
@@ -859,7 +875,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj": {
+              "projectPath": "C:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

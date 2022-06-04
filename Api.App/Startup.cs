@@ -1,3 +1,5 @@
+using Api.CrossCutting.Configurations;
+using Api.CrossCutting.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +20,8 @@ namespace Api.App
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.ConfigureDependenciesRepository(Configuration);
+            services.ConfigureJwt(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -17,10 +17,10 @@ namespace Api.Infra.Repositories
             _dataset = context.Set<AuthEntity>();
         }
 
-        public async Task<bool> Exists(string cnpj) {
+        public async Task<AuthEntity> SelectByCnpjAsync(string cnpj) {
             try
             {
-                return await _dataset.AnyAsync(p => p.Cnpj.Equals(cnpj));
+                return await _dataset.SingleOrDefaultAsync(p => p.Cnpj.Equals(cnpj));
             }
             catch (Exception ex)
             {
