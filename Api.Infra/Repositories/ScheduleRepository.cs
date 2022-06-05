@@ -19,11 +19,11 @@ namespace Api.Infra.Repositories
             _dataset = context.Set<ScheduleEntity>();
         }
 
-        public async Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(DateTime date)
+        public async Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(int workshopId, DateTime date)
         {
             try
             {
-                return await _dataset.Where(p => p.Date.Equals(date)).ToListAsync();
+                return await _dataset.Where(p => p.WorkshopId.Equals(workshopId) && p.Date.Equals(date)).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -31,11 +31,11 @@ namespace Api.Infra.Repositories
             }
         }
 
-        public async Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(DateTime startDate, DateTime endDate)
+        public async Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(int workshopId, DateTime startDate, DateTime endDate)
         {
             try
             {
-                return await _dataset.Where(p => p.Date >= startDate && p.Date <= endDate).ToListAsync();
+                return await _dataset.Where(p => p.WorkshopId.Equals(workshopId) && p.Date >= startDate && p.Date <= endDate).ToListAsync();
             }
             catch (Exception ex)
             {

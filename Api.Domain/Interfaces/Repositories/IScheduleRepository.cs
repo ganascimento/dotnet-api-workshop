@@ -8,7 +8,7 @@ namespace Api.Domain.Interfaces.Repositories
 {
     public interface IScheduleRepository : IRepository<ScheduleEntity>
     {
-        Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(DateTime date);
-        Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(DateTime startDate, DateTime endDate);
+        Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(int workshopId, DateTime date);
+        Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(int workshopId, DateTime startDate, DateTime endDate);
     }
 }
