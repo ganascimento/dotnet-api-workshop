@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "59FpZGqjReXUblZN5SIE1xgN6uugkvDKmCjgWKjsUbYIns24NObbVBahtkIPyZeOLNLdVFaQ/BOqZ+gJYm4/yA==",
+  "dgSpecHash": "YwZIzQYJWXgCF8LHhzS9xIEOvR9ADzyVmQ4Q2Ef3RZ1hFfrIjV+/xi1NoyVx6gPCBVCAMRT19LcpVT8oj2jNCw==",
   "success": true,
-  "projectFilePath": "C:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj",
+  "projectFilePath": "c:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -424,11 +424,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Tests\\ProjectWorkshop\\Api.Service\\Api.Service.csproj",
+      "projectUniqueName": "c:\\Tests\\ProjectWorkshop\\Api.Service\\Api.Service.csproj",
       "projectName": "Api.Service",
-      "projectPath": "C:\\Tests\\ProjectWorkshop\\Api.Service\\Api.Service.csproj",
+      "projectPath": "c:\\Tests\\ProjectWorkshop\\Api.Service\\Api.Service.csproj",
       "packagesPath": "C:\\Users\\Guilherme\\.nuget\\packages\\",
-      "outputPath": "C:\\Tests\\ProjectWorkshop\\Api.Service\\obj\\",
+      "outputPath": "c:\\Tests\\ProjectWorkshop\\Api.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -450,8 +450,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj": {
-              "projectPath": "C:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj"
+            "c:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj": {
+              "projectPath": "c:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj"
             }
           }
         }

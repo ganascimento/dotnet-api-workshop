@@ -95,10 +95,10 @@ namespace Api.Service.Services
         }
 
         private async Task ValidToCreate(AuthDtoCreate dto) {
-            var auth = await _authRepository.SelectByCnpjAsync(dto.Cnpj);
-
             if (!CustomValidation.IsCnpj(dto.Cnpj))
                 throw new Exception("CNPJ is invalid");
+
+            var auth = await _authRepository.SelectByCnpjAsync(dto.Cnpj);            
             if (auth != null)
                 throw new Exception("CNPJ already exists");
         }

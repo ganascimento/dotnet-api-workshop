@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s6h6bkn3oHTOljOrWuEs0/BDBQIJgYmbkQ0rCwm7Cw/Wf92mFXuKDTIbt9CZFugjBZsOxWzx/1fvPDTggQz0rA==",
+  "dgSpecHash": "2L212vMe6Zr6nrakBJ3eJA5duDrg8+oNz4aNGmUo/hqt2ZABQYO9ifOglUcN5PvJzZXegvJgR3uHdaVZEN0Brg==",
   "success": true,
-  "projectFilePath": "C:\\Tests\\ProjectWorkshop\\Api.CrossCutting\\Api.CrossCutting.csproj",
+  "projectFilePath": "c:\\Tests\\ProjectWorkshop\\Api.CrossCutting\\Api.CrossCutting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Guilherme\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Guilherme\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.7\\microsoft.aspnetcore.authentication.jwtbearer.5.0.7.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DuWTkGRm2vV7pP0b3eHOfQl8J7Vuk/+UfAVTSJp/Wm3aOzdugiakg04RwJuk5/xUB+nVTtJYVgAQ6pmeGn52CA==",
+  "dgSpecHash": "WBrz7IiF9w/eFkM8S4lL0SBhpWfzVt0enujwp8JnBuPam2DsicHRYgRiOn6xtwceCWrWBEs53W5Wukk9U/hiVA==",
   "success": true,
-  "projectFilePath": "C:\\Tests\\ProjectWorkshop\\Api.App\\Api.App.csproj",
+  "projectFilePath": "c:\\Tests\\ProjectWorkshop\\Api.App\\Api.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Guilherme\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Guilherme\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.7\\microsoft.aspnetcore.authentication.jwtbearer.5.0.7.nupkg.sha512",

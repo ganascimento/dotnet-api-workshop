@@ -1111,11 +1111,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Tests\\ProjectWorkshop\\Api.CrossCutting\\Api.CrossCutting.csproj",
+      "projectUniqueName": "c:\\Tests\\ProjectWorkshop\\Api.CrossCutting\\Api.CrossCutting.csproj",
       "projectName": "Api.CrossCutting",
-      "projectPath": "C:\\Tests\\ProjectWorkshop\\Api.CrossCutting\\Api.CrossCutting.csproj",
+      "projectPath": "c:\\Tests\\ProjectWorkshop\\Api.CrossCutting\\Api.CrossCutting.csproj",
       "packagesPath": "C:\\Users\\Guilherme\\.nuget\\packages\\",
-      "outputPath": "C:\\Tests\\ProjectWorkshop\\Api.CrossCutting\\obj\\",
+      "outputPath": "c:\\Tests\\ProjectWorkshop\\Api.CrossCutting\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1137,14 +1137,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj": {
-              "projectPath": "C:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj"
+            "c:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj": {
+              "projectPath": "c:\\Tests\\ProjectWorkshop\\Api.Domain\\Api.Domain.csproj"
             },
-            "C:\\Tests\\ProjectWorkshop\\Api.Infra\\Api.Infra.csproj": {
-              "projectPath": "C:\\Tests\\ProjectWorkshop\\Api.Infra\\Api.Infra.csproj"
+            "c:\\Tests\\ProjectWorkshop\\Api.Infra\\Api.Infra.csproj": {
+              "projectPath": "c:\\Tests\\ProjectWorkshop\\Api.Infra\\Api.Infra.csproj"
             },
-            "C:\\Tests\\ProjectWorkshop\\Api.Service\\Api.Service.csproj": {
-              "projectPath": "C:\\Tests\\ProjectWorkshop\\Api.Service\\Api.Service.csproj"
+            "c:\\Tests\\ProjectWorkshop\\Api.Service\\Api.Service.csproj": {
+              "projectPath": "c:\\Tests\\ProjectWorkshop\\Api.Service\\Api.Service.csproj"
             }
           }
         }
