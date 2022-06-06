@@ -33,21 +33,55 @@ namespace Api.Service.Services
 
         public async Task<IEnumerable<ScheduleDto>> GetToday()
         {
-            var schedules = await _scheduleRepository.SelectPeriodAsync(_identityService.GetWorkshopId(), DateTime.Now);
+            var schedules = await _scheduleRepository.SelectPeriodAsync(
+                _identityService.GetWorkshopId(),
+                DateTime.Now.Date,
+                DateTime.Now.Date.AddDays(1).AddSeconds(-1));
             return await MapSchedules(schedules);
             
         }
 
         public async Task<IEnumerable<ScheduleDto>> GetPeriod()
         {
-            var schedules = await _scheduleRepository.SelectPeriodAsync(_identityService.GetWorkshopId(), DateTime.Now, GetNextValidDay());
+            var schedules = await _scheduleRepository.SelectPeriodAsync(
+                _identityService.GetWorkshopId(),
+                DateTime.Now.Date,
+                GetNextValidDay().AddDays(1).AddSeconds(-1));
             return await MapSchedules(schedules);
         }
 
         public async Task<IEnumerable<ScheduleDto>> GetPeriod(DateTime startDate, DateTime endDate)
         {
-            var schedules = await _scheduleRepository.SelectPeriodAsync(_identityService.GetWorkshopId(), startDate, endDate);
+            var schedules = await _scheduleRepository.SelectPeriodAsync(
+                _identityService.GetWorkshopId(),
+                startDate,
+                endDate.AddDays(1).AddSeconds(-1));
             return await MapSchedules(schedules);
+        }
+
+        public async Task<IEnumerable<ScheduleDtoAvailableWorkLoad>> GetAvailableWorkLoad()
+        {
+            var services = await _serviceRepository.SelectAsync();
+            var schedules = await _scheduleRepository.SelectPeriodAsync(
+                _identityService.GetWorkshopId(),
+                DateTime.Now.Date,
+                GetNextValidDay().AddDays(1).AddSeconds(-1));
+
+            var data = new List<ScheduleDtoAvailableWorkLoad>();
+            var dictionary = CreateDictionary();
+
+            foreach (var schedule in schedules) {
+                dictionary[schedule.Date.Date] -= services.FirstOrDefault(x => x.Id == schedule.ServiceId).WorkUnits;
+            }
+
+            foreach(var key in dictionary.Keys) {
+                data.Add(new ScheduleDtoAvailableWorkLoad{
+                    Date = key,
+                    AvailableWorkLoad = dictionary[key]
+                });
+            }
+
+            return data;
         }
 
         public async Task<ScheduleDtoCreateResult> Create(ScheduleDtoCreate dto)
@@ -69,12 +103,15 @@ namespace Api.Service.Services
             if (IsWeekend(dto.Date))
                 throw new Exception("Invalid day");
 
-            var schedulesToday = await _scheduleRepository.SelectPeriodAsync(_identityService.GetWorkshopId(), DateTime.Now);
+            var schedulesToday = await _scheduleRepository.SelectPeriodAsync(
+                _identityService.GetWorkshopId(),
+                dto.Date.Date,
+                dto.Date.Date.AddDays(1).AddSeconds(-1));
             var services = await _serviceRepository.SelectAsync();
             var serviceWorkUnits = services.FirstOrDefault(x => x.Id == dto.ServiceId).WorkUnits;
-            int workLoad = schedulesToday.Aggregate(0, (acc, x) => acc + x.Service.WorkUnits) + serviceWorkUnits;
+            int workLoad = schedulesToday.Aggregate(0, (acc, x) => acc + services.FirstOrDefault(s => s.Id == x.ServiceId).WorkUnits) + serviceWorkUnits;
 
-            if (workLoad > 10)
+            if ((workLoad > 10 && !IsMoreWork(dto.Date)) || (workLoad > 13 && IsMoreWork(dto.Date)))
                 throw new Exception("Workload exceeded");
         }
 
@@ -89,9 +126,25 @@ namespace Api.Service.Services
             return schedulesDto;
         }
 
+        private Dictionary<DateTime, int> CreateDictionary() {
+            var dictionary = new Dictionary<DateTime, int>();
+            var date = DateTime.Now.Date;
+            int count = 0;
+            do {
+                if (!IsWeekend(date)) {
+                    count++;
+                    var workload = IsMoreWork(date) ? 13 : 10;
+                    dictionary.Add(date, workload);
+                }
+                date = date.AddDays(1);
+            } while (count != 6);
+
+            return dictionary;
+        }
+
         private DateTime GetNextValidDay()
         {
-            var date = DateTime.Now;
+            var date = DateTime.Now.Date;
             int count = 0;
             do {
                 date = date.AddDays(1);
@@ -104,6 +157,11 @@ namespace Api.Service.Services
         private bool IsWeekend(DateTime date)
         {
             return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
+        }
+
+        private bool IsMoreWork(DateTime date)
+        {
+            return date.DayOfWeek == DayOfWeek.Thursday || date.DayOfWeek == DayOfWeek.Friday;
         }
     }
 }

@@ -26,7 +26,8 @@ namespace Api.Infra.Repositories
 
         public async Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(int workshopId, DateTime startDate, DateTime endDate)
         {
-            return await _dataset.Where(p => p.WorkshopId.Equals(workshopId) && p.Date >= startDate && p.Date <= endDate).ToListAsync();
+            var schedules = await _dataset.Where(p => p.WorkshopId.Equals(workshopId) && p.Date >= startDate && p.Date <= endDate).ToListAsync();
+            return schedules.OrderBy(x => x.Date).ToList();
         }
     }
 }
