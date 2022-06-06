@@ -23,7 +23,7 @@ namespace Api.CrossCutting.DependencyInjection
             services.AddDbContext<DataContext>(
                 options => options.UseMySql(
                     configuration.GetConnectionString("DefaultConnection"),
-                    new MySqlServerVersion(new Version(8, 0, 27))
+                    new MySqlServerVersion(new Version(5, 7))
                 )
             );
         }

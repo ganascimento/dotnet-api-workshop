@@ -364,6 +364,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Api.Domain": "1.0.0",
+          "AutoMapper": "11.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.7"
         },
         "compile": {
