@@ -11,6 +11,7 @@ using Api.Domain.Interfaces.Services;
 using Api.Service.Helpers;
 using Api.Service.Security;
 using AutoMapper;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Api.Service.Services
@@ -24,13 +25,13 @@ namespace Api.Service.Services
 
         public AuthService(
             IAuthRepository authRepository,
-            AppSettings appSettings,
+            IOptions<AppSettings> appSettings,
             IWorkshopRepository workshopRepository,
             IMapper mapper
         )
         {
             _authRepository = authRepository;
-            _appSettings = appSettings;
+            _appSettings = appSettings.Value;
             _workshopRepository = workshopRepository;
             _mapper = mapper;
         }
@@ -39,6 +40,8 @@ namespace Api.Service.Services
         {
             var auth = _mapper.Map<AuthEntity>(dto);
             var workshop = _mapper.Map<WorkshopEntity>(dto);
+
+            auth.Password = EncryptHelper.HashPassword(auth.Password);
 
             auth = await _authRepository.InsertAsync(auth);
             workshop.AuthId = auth.Id;

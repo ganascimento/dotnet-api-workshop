@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Api.Domain.Entities;
 using Api.Domain.Interfaces.Repositories;
@@ -18,14 +17,7 @@ namespace Api.Infra.Repositories
         }
 
         public async Task<AuthEntity> SelectByCnpjAsync(string cnpj) {
-            try
-            {
-                return await _dataset.SingleOrDefaultAsync(p => p.Cnpj.Equals(cnpj));
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return await _dataset.SingleOrDefaultAsync(p => p.Cnpj.Equals(cnpj));
         }
     }
 }

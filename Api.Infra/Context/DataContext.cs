@@ -19,8 +19,8 @@ namespace Api.Infra.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
             modelBuilder.Entity<AuthEntity>(new AuthMapping().Configure);
-
             modelBuilder.Entity<ServiceEntity>(new ServiceMapping().Configure);
             modelBuilder.Entity<ScheduleEntity>(new ScheduleMapping().Configure);
             modelBuilder.Entity<WorkshopEntity>(new WorkshopMapping().Configure);

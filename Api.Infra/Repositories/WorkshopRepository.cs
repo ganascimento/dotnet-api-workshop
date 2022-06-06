@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Api.Domain.Entities;
 using Api.Domain.Interfaces.Repositories;
@@ -18,14 +17,7 @@ namespace Api.Infra.Repositories
 
         public async Task<WorkshopEntity> SelectByAuthIdAsync(int id)
         {
-            try
-            {
-                return await _dataset.SingleOrDefaultAsync(p => p.AuthId.Equals(id));
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return await _dataset.SingleOrDefaultAsync(p => p.AuthId.Equals(id));
         }
     }
 }

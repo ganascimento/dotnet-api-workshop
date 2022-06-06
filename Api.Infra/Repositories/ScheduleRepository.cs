@@ -21,26 +21,12 @@ namespace Api.Infra.Repositories
 
         public async Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(int workshopId, DateTime date)
         {
-            try
-            {
-                return await _dataset.Where(p => p.WorkshopId.Equals(workshopId) && p.Date.Equals(date)).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return await _dataset.Where(p => p.WorkshopId.Equals(workshopId) && p.Date.Equals(date)).ToListAsync();
         }
 
         public async Task<IEnumerable<ScheduleEntity>> SelectPeriodAsync(int workshopId, DateTime startDate, DateTime endDate)
         {
-            try
-            {
-                return await _dataset.Where(p => p.WorkshopId.Equals(workshopId) && p.Date >= startDate && p.Date <= endDate).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return await _dataset.Where(p => p.WorkshopId.Equals(workshopId) && p.Date >= startDate && p.Date <= endDate).ToListAsync();
         }
     }
 }

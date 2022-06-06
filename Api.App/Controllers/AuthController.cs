@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.App.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -31,10 +30,15 @@ namespace Api.App.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] AuthDtoLogin dto) {
             try {
                 var result = await _authService.Login(dto);
                 return Ok(result);
+            }
+            catch (UnauthorizedAccessException ex) {
+                return Unauthorized(ex.Message);
             }
             catch (Exception ex) {
                 return BadRequest(ex.Message);

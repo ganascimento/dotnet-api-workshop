@@ -20,16 +20,17 @@ namespace Api.App
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureDependenciesRepository(Configuration);
-            services.ConfigureDependenciesService(Configuration);
-            services.ConfigureJwt(Configuration);
-            services.ConfigureAutoMapper();
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api.App", Version = "v1" });
             });
+
+            services.AddHttpContextAccessor();
+            services.ConfigureJwt(Configuration);
+            services.ConfigureAutoMapper();
+            services.ConfigureDependenciesRepository(Configuration);
+            services.ConfigureDependenciesService(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

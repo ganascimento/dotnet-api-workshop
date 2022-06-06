@@ -6,7 +6,6 @@ namespace Api.Infra.Mappings
 {
     public class AuthMapping : IEntityTypeConfiguration<AuthEntity>
     {
-
         public void Configure(EntityTypeBuilder<AuthEntity> builder)
         {
             builder.ToTable("Auth");
