@@ -19,7 +19,7 @@ namespace Api.App.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Create() {
+        public async Task<IActionResult> GetAll() {
             try {
                 var result = await _serviceService.GetAll();
                 return Ok(result);

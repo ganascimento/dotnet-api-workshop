@@ -38,6 +38,7 @@ namespace Api.Service.Services
 
         public async Task<AuthDtoLoginResult> Create(AuthDtoCreate dto)
         {
+            await ValidToCreate(dto);
             var auth = _mapper.Map<AuthEntity>(dto);
             var workshop = _mapper.Map<WorkshopEntity>(dto);
 
@@ -53,10 +54,11 @@ namespace Api.Service.Services
 
         public async Task<AuthDtoLoginResult> Login(AuthDtoLogin dto)
         {
+            ValidToLogin(dto);
             var auth = await _authRepository.SelectByCnpjAsync(dto.Cnpj);
 
             if (auth == null || !EncryptHelper.Verify(dto.Password, auth.Password))
-                throw new UnauthorizedAccessException();
+                throw new UnauthorizedAccessException("Not authorized");
 
             var workshop = await _workshopRepository.SelectByAuthIdAsync(auth.Id);
 
@@ -90,6 +92,20 @@ namespace Api.Service.Services
                 Authenticated = true,
                 Expiration = expireDate
             };
+        }
+
+        private async Task ValidToCreate(AuthDtoCreate dto) {
+            var auth = await _authRepository.SelectByCnpjAsync(dto.Cnpj);
+
+            if (!CustomValidation.IsCnpj(dto.Cnpj))
+                throw new Exception("CNPJ is invalid");
+            if (auth != null)
+                throw new Exception("CNPJ already exists");
+        }
+
+        private void ValidToLogin(AuthDtoLogin dto) {
+            if (!CustomValidation.IsCnpj(dto.Cnpj))
+                throw new Exception("CNPJ is invalid");
         }
     }
 }

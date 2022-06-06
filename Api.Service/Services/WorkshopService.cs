@@ -11,16 +11,19 @@ namespace Api.Service.Services
     public class WorkshopService : IWorkshopService
     {
         private readonly IWorkshopRepository _workshopRepository;
+        private readonly IAuthRepository _authRepository;
         private readonly IMapper _mapper;
         private readonly IIdentityService _identityService;
 
         public WorkshopService(
             IWorkshopRepository workshopRepository,
+            IAuthRepository authRepository,
             IMapper mapper,
             IIdentityService identityService
         )
         {
             _workshopRepository = workshopRepository;
+            _authRepository = authRepository;
             _mapper = mapper;
             _identityService = identityService;
         }
@@ -31,11 +34,6 @@ namespace Api.Service.Services
             return _mapper.Map<WorkshopDto>(workshop);
         }
 
-        public async Task<bool> Remove()
-        {
-            return await _workshopRepository.DeleteAsync(_identityService.GetWorkshopId());
-        }
-
         public async Task<WorkshopDtoUpdateResult> Update(WorkshopDtoUpdate dto)
         {
             var workshop = _mapper.Map<WorkshopEntity>(dto);
@@ -44,6 +42,13 @@ namespace Api.Service.Services
             workshop = await _workshopRepository.UpdateAsync(workshop);
 
             return _mapper.Map<WorkshopDtoUpdateResult>(workshop);
+        }
+
+        public async Task<bool> Remove()
+        {
+            await _workshopRepository.DeleteAsync(_identityService.GetWorkshopId());
+            await _authRepository.DeleteAsync(_identityService.GetAuthId());
+            return true;
         }
     }
 }
