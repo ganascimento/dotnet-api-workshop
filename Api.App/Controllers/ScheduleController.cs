@@ -20,7 +20,7 @@ namespace Api.App.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() {
+        public async Task<IActionResult> GetToday() {
             try {
                 var result = await _scheduleService.GetToday();
                 return Ok(result);
